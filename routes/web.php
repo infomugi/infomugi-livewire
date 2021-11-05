@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::livewire('/', 'auth.signin')
-->layout('layouts.signin')->name('auth.signin');
+Route::livewire('/', 'auth.login')
+->layout('layouts.app')->name('auth.login');
 
 Route::group(['middleware' => 'guest'], function(){
     

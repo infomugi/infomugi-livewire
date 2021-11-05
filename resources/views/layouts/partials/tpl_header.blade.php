@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Starterkit Laravel Liveware</title>
+    <title>Good – Bootstrap 5 HTML Admin Dashboard Template by Keenthemes</title>
     <meta charset="utf-8" />
     <meta name="description" content="Good admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." />
     <meta name="keywords" content="Good, bootstrap, bootstrap 5, admin themes, free admin themes, bootstrap admin, bootstrap dashboard, bootstrap dark mode" />
@@ -16,27 +16,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <link href="{!! asset('backend/assets/plugins/global/plugins.bundle.css') !!}" rel="stylesheet" type="text/css" />
     <link href="{!! asset('backend/assets/css/style.bundle.css') !!}" rel="stylesheet" type="text/css" />
-    @livewireStyles
     
+    @livewireStyles
+    @livewireScripts
+    <script src="{{ mix('js/app.js') }}"></script>  
     
 </head>
 <body id="kt_body" class="auth-bg">
-    
-    @yield('content')
-    
-    @livewireScripts
-    <script src="{{ mix('js/app.js') }}"></script>  
-    <script src="{!! asset('backend/assets/plugins/global/plugins.bundle.js') !!}"></script>
-    <script src="{!! asset('backend/assets/js/scripts.bundle.js') !!}"></script>
-    <script src="{!! asset('backend/assets/js/custom/authentication/sign-in/general.js') !!}"></script>
-    
-    <script>
-        @if(session()->has('success'))
-        toastr.success('{{ session('success') }}')
-        @elseif(session()->has('error'))
-        toastr.error('{{ session('error') }}')
-        @endif
-    </script>
-    
-</body>
-</html>
