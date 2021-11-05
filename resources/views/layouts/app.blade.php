@@ -17,18 +17,19 @@
     <link href="{!! asset('backend/assets/plugins/global/plugins.bundle.css') !!}" rel="stylesheet" type="text/css" />
     <link href="{!! asset('backend/assets/css/style.bundle.css') !!}" rel="stylesheet" type="text/css" />
     @livewireStyles
-    
+    @livewireScripts
+    <script src="{{ mix('js/app.js') }}"></script>  
     
 </head>
 <body id="kt_body" class="auth-bg">
     
     @yield('content')
     
-    @livewireScripts
-    <script src="{{ mix('js/app.js') }}"></script>  
+    
     <script src="{!! asset('backend/assets/plugins/global/plugins.bundle.js') !!}"></script>
     <script src="{!! asset('backend/assets/js/scripts.bundle.js') !!}"></script>
-    <script src="{!! asset('backend/assets/js/custom/authentication/sign-in/general.js') !!}"></script>
+    <script src="{!! asset('backend/assets/js/custom/widgets.js') !!}"></script>
+    {{-- <script src="{!! asset('backend/assets/js/custom/authentication/sign-in/general.js') !!}"></script> --}}
     
     <script>
         @if(session()->has('success'))
