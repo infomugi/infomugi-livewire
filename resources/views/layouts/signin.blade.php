@@ -13,33 +13,32 @@
 <meta property="og:url" content="https://themes.getbootstrap.com/product/good-bootstrap-5-admin-dashboard-template" />
 <meta property="og:site_name" content="Keenthemes | Good" />
 <link rel="canonical" href="https://preview.keenthemes.com/good" />
-<link rel="shortcut icon" href="{{ asset('/public/backend/assets/media/logos/favicon.ico') }}" />
-<!--begin::Fonts-->
+<link rel="shortcut icon" href="{!! asset('backend/assets/media/logos/favicon.ico') !!}" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
-<!--end::Fonts-->
-<!--begin::Global Stylesheets Bundle(used by all pages)-->
-<link href="{{ asset('/public/backend/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ asset('/public/backend/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
-<!--end::Global Stylesheets Bundle-->
+<link href="{!! asset('backend/assets/plugins/global/plugins.bundle.css') !!}" rel="stylesheet" type="text/css" />
+<link href="{!! asset('backend/assets/css/style.bundle.css') !!}" rel="stylesheet" type="text/css" />
+
+@livewireStyles
+@livewireScripts
 
 </head>
-<!--end::Head-->
-<!--begin::Body-->
 <body id="kt_body" class="auth-bg">
 
+@yield('content')
 
+<!-- <script>var hostUrl = "{{!! asset('backend/assets/index.html') !!}";</script> -->
+<script src="{{ mix('js/app.js') }}"></script>   
+<script src="{!! asset('backend/assets/plugins/global/plugins.bundle.js') !!}"></script>
+<script src="{!! asset('backend/assets/js/scripts.bundle.js') !!}"></script>
+<script src="{!! asset('backend/assets/js/custom/authentication/sign-in/general.js') !!}"></script>
 
-<script>var hostUrl = "{{ asset('/public/backend/assets/index.html') }}";</script>
-<!--begin::Javascript-->
-<!--begin::Global Javascript Bundle(used by all pages)-->
-<script src="{{ asset('/public/backend/assets/plugins/global/plugins.bundle.js') }}"></script>
-<script src="{{ asset('/public/backend/assets/js/scripts.bundle.js') }}"></script>
-<!--end::Global Javascript Bundle-->
-<!--begin::Page Custom Javascript(used by this page)-->
-<script src="{{ asset('/public/backend/assets/js/custom/authentication/sign-in/general.js') }}"></script>
-<!--end::Page Custom Javascript-->
-<!--end::Javascript-->
+<script>
+@if(session()->has('success'))
+toastr.success('{{ session('success') }}')
+@elseif(session()->has('error'))
+toastr.error('{{ session('error') }}')
+@endif
+</script>
 
 </body>
-<!--end::Body-->
 </html>

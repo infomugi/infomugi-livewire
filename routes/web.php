@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::livewire('/', 'auth.signin')
+->layout('layouts.signin')->name('auth.signin');
 
 Route::group(['middleware' => 'guest'], function(){
     
