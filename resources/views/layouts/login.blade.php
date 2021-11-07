@@ -1,36 +1,40 @@
-@include('layouts\partials\tpl_header')
-
-<div class="d-flex flex-column flex-root">
-    <div class="d-flex flex-column flex-lg-row flex-column-fluid">
-        <div class="d-flex flex-column flex-lg-row-auto bg-dark w-xl-600px positon-xl-relative">
-            <div class="d-flex flex-column position-xl-fixed top-0 bottom-0 w-xl-600px scroll-y">
-                <div class="d-flex flex-row-fluid flex-column text-center p-10 pt-lg-20">
-                    
-                    <a href="#" class="py-9 pt-lg-20">
-                        <img alt="Logo" src="{!! asset('backend/assets/media/logos/default.svg') !!}" class="h-40px" />
-                    </a>
-                    
-                    <h1 class="fw-bolder text-white fs-2qx pb-5 pb-md-10">Starterkit Admin</h1>
-                    <p class="fw-bold fs-2 text-white">Laravel Livewire</p>
-                </div>
-                <div class="d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-350px" style="background-image: url({!! asset('backend/assets/media/illustrations/sketchy-1/2.png') !!})"></div>
-            </div>
-        </div>
-        
-        <div class="d-flex flex-column flex-lg-row-fluid py-10">
-            <div class="d-flex flex-center flex-column flex-column-fluid">
-                <div class="w-lg-500px p-10 p-lg-15 mx-auto">
-                    
-                    @yield('content')
-                    
-                </div>
-                
-            </div>
-            
-        </div>
-    </div>
-</div>
-</div>
-</div>
-
-@include('layouts\partials\tpl_footer')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Starterkit Laravel Liveware</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="Good admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." />
+    <meta name="keywords" content="Good, bootstrap, bootstrap 5, admin themes, free admin themes, bootstrap admin, bootstrap dashboard, bootstrap dark mode" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Good - Bootstrap 5 HTML Admin Dashboard Template" />
+    <meta property="og:url" content="https://themes.getbootstrap.com/product/good-bootstrap-5-admin-dashboard-template" />
+    <meta property="og:site_name" content="Keenthemes | Good" />
+    <link rel="canonical" href="https://preview.keenthemes.com/good" />
+    <link rel="shortcut icon" href="{!! asset('backend/assets/media/logos/favicon.ico') !!}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <link href="{!! asset('backend/assets/plugins/global/plugins.bundle.css') !!}" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('backend/assets/css/style.bundle.css') !!}" rel="stylesheet" type="text/css" />
+    @livewireStyles
+    @livewireScripts
+    <script src="{{ mix('js/app.js') }}"></script>  
+    
+</head>
+<body id="kt_body" class="auth-bg">
+    
+    @yield('content')
+    
+    <script src="{!! asset('backend/assets/plugins/global/plugins.bundle.js') !!}"></script>
+    <script src="{!! asset('backend/assets/js/scripts.bundle.js') !!}"></script>
+    
+    <script>
+        @if(session()->has('success'))
+        toastr.success('{{ session('success') }}')
+        @elseif(session()->has('error'))
+        toastr.error('{{ session('error') }}')
+        @endif
+    </script>
+    
+</body>
+</html>

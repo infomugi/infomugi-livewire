@@ -14,17 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::livewire('/', 'auth.login')
-->layout('layouts.app')->name('auth.login');
+->layout('layouts.login')->name('auth.login');
 
 Route::group(['middleware' => 'guest'], function(){
     
     //register
     Route::livewire('/register', 'auth.register')
-    ->layout('layouts.app')->name('auth.register');
+    ->layout('layouts.login')->name('auth.register');
     
     //login
     Route::livewire('/login', 'auth.login')
-    ->layout('layouts.app')->name('auth.login');
+    ->layout('layouts.login')->name('auth.login');
     
 });
 
@@ -32,6 +32,15 @@ Route::group(['middleware' => 'auth'], function(){
     
     //dashboard
     Route::livewire('/admin/dashboard', 'admin.dashboard')
-    ->layout('layouts.app')->name('admin.dashboard');
+    ->layout('layouts.form')->name('admin.dashboard');
+    
+    //dashboard
+    Route::livewire('/puskesmas', 'master.puskesmas')
+    ->layout('layouts.form')->name('puskesmas');
+    
+    //dashboard
+    Route::livewire('/vaksinasi', 'master.vaksinasi')
+    ->layout('layouts.form')->name('vaksinasi');
+    
     
 });

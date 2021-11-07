@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Starterkit Laravel Liveware</title>
+    <title>Manage</title>
     <meta charset="utf-8" />
     <meta name="description" content="Good admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets." />
     <meta name="keywords" content="Good, bootstrap, bootstrap 5, admin themes, free admin themes, bootstrap admin, bootstrap dashboard, bootstrap dark mode" />
@@ -23,18 +23,55 @@
 </head>
 <body id="kt_body" class="auth-bg">
     
-    @yield('content')
+    <div class="page d-flex flex-row flex-column-fluid">
+        
+        @include('layouts\partials\tpl_left')
+        <!--end::Aside-->
+        <!--begin::Wrapper-->
+        <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+            <!--begin::Header-->
+            <div id="kt_header" style="" class="header align-items-stretch">
+                
+                @include('layouts\partials\tpl_header_brand')
+                
+                @include('layouts\partials\tpl_navbar')
+                
+            </div>
+            
+            <div id="kt_content_container" class="container-xxl">
+                <div class="card card-flush">
+                    @yield('content')
+                </div>
+            </div>
+            
+            
+            <!--end::Footer-->
+        </div>
+        <!--end::Wrapper-->
+    </div>
     
     <script src="{!! asset('backend/assets/plugins/global/plugins.bundle.js') !!}"></script>
     <script src="{!! asset('backend/assets/js/scripts.bundle.js') !!}"></script>
+    <script src="{!! asset('backend/assets/js/custom/widgets.js') !!}"></script>
+    {{-- <script src="{!! asset('backend/assets/js/custom/authentication/sign-in/general.js') !!}"></script> --}}
     
-    <script>
-        @if(session()->has('success'))
-        toastr.success('{{ session('success') }}')
-        @elseif(session()->has('error'))
-        toastr.error('{{ session('error') }}')
-        @endif
+    <script type="text/javascript">
+        window.livewire.on('showConfirmDelete', () => {
+            $('#deleteModal').modal('show');
+        });
+        window.livewire.on('hideConfirmDelete', () => {
+            $('#deleteModal').modal('hide');
+        });
+        window.livewire.on('showForm', () => {
+            $('#showForm').modal('show');
+        });
+        window.livewire.on('hideForm', () => {
+            $('#showForm').modal('hide');
+        });
     </script>
+    
+    
+    
     
 </body>
 </html>
