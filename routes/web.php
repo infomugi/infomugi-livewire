@@ -32,15 +32,11 @@ Route::group(['middleware' => 'auth'], function(){
     
     //dashboard
     Route::livewire('/admin/dashboard', 'admin.dashboard')
-    ->layout('layouts.form')->name('admin.dashboard');
+    ->layout('layouts.page')->name('admin.dashboard');
     
     //dashboard
-    Route::livewire('/puskesmas', 'master.puskesmas')
-    ->layout('layouts.form')->name('puskesmas');
-    
-    //dashboard
-    Route::livewire('/vaksinasi', 'master.vaksinasi')
-    ->layout('layouts.form')->name('vaksinasi');
+    Route::livewire('/division', 'master.division')
+    ->layout('layouts.page')->name('division');
     
     
 });

@@ -1,5 +1,4 @@
-@section('pageTitle', 'Kelola Vaksinasi')
-
+@section('pageTitle', 'Manage Division')
 <div>
     @if (session()->has('message'))
     <div class="flex mx-auto">
@@ -18,8 +17,7 @@
     <div class="row">
         <div class="col-md-3">
             <input wire:model="search"
-            class="form-control form-control-solid w-250px ps-15"
-            placeholder="Cari Vaksinasi"
+            class="form-control"
             id="search" type="text" name="search" wire:model="search" required="required"
             autofocus="autofocus"/>
         </div>
@@ -38,40 +36,16 @@
             <thead>
                 <tr>
                     
-                    <th>TANGGAL
+                    <th>NAME
                     </th>
                     
-                    <th>KODE KECAMATAN
+                    <th>DESCRIPTION
                     </th>
                     
-                    <th>FASKES
+                    <th>STATUS
                     </th>
                     
-                    <th>NIK
-                    </th>
-                    
-                    <th>NAMA
-                    </th>
-                    
-                    <th>JK
-                    </th>
-                    
-                    <th>KELOMPOK USIA
-                    </th>
-                    
-                    <th>KATEGORI
-                    </th>
-                    
-                    <th>SUB KATEGORI
-                    </th>
-                    
-                    <th>VAKSINASI
-                    </th>
-                    
-                    <th>TIKET VAKSINASI
-                    </th>
-                    
-                    <th>JENIS VAKSIN
+                    <th>TYPE
                     </th>
                     
                     
@@ -83,29 +57,13 @@
             </thead>
             <tbody>
                 @forelse($rows as $row)
-                <tr> <td>{{ $row->tanggal}}</td>
+                <tr> <td>{{ $row->name}}</td>
                     
-                    <td>{{ $row->kode_kecamatan}}</td>
+                    <td>{{ $row->description}}</td>
                     
-                    <td>{{ $row->faskes}}</td>
+                    <td>{{ $row->status}}</td>
                     
-                    <td>{{ $row->nik}}</td>
-                    
-                    <td>{{ $row->nama}}</td>
-                    
-                    <td>{{ $row->jk}}</td>
-                    
-                    <td>{{ $row->kelompok_usia}}</td>
-                    
-                    <td>{{ $row->kategori}}</td>
-                    
-                    <td>{{ $row->sub_kategori}}</td>
-                    
-                    <td>{{ $row->vaksinasi}}</td>
-                    
-                    <td>{{ $row->tiket_vaksinasi}}</td>
-                    
-                    <td>{{ $row->jenis_vaksin}}</td>
+                    <td>{{ $row->type}}</td>
                     
                     <td>
                         <a href="#" class="text-primary" wire:click.prevent="edit({{ $row->id }})">
@@ -142,18 +100,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class='form-group'><label for='tanggal'>Tanggal</label><input type='text' class='form-control @error('tanggal')  is-invalid @enderror' wire:model='tanggal'>@error('tanggal')<div class='invalid-feedback'>{{ $message }}</div>@enderror</div>
-                    <div class='form-group'><label for='kode_kecamatan'>Kode kecamatan</label><input type='text' class='form-control @error('kode_kecamatan')  is-invalid @enderror' wire:model='kode_kecamatan'>@error('kode_kecamatan')<div class='invalid-feedback'>{{ $message }}</div>@enderror</div>
-                    <div class='form-group'><label for='faskes'>Faskes</label><input type='text' class='form-control @error('faskes')  is-invalid @enderror' wire:model='faskes'>@error('faskes')<div class='invalid-feedback'>{{ $message }}</div>@enderror</div>
-                    <div class='form-group'><label for='nik'>Nik</label><input type='text' class='form-control @error('nik')  is-invalid @enderror' wire:model='nik'>@error('nik')<div class='invalid-feedback'>{{ $message }}</div>@enderror</div>
-                    <div class='form-group'><label for='nama'>Nama</label><input type='text' class='form-control @error('nama')  is-invalid @enderror' wire:model='nama'>@error('nama')<div class='invalid-feedback'>{{ $message }}</div>@enderror</div>
-                    <div class='form-group'><label for='jk'>Jk</label><input type='text' class='form-control @error('jk')  is-invalid @enderror' wire:model='jk'>@error('jk')<div class='invalid-feedback'>{{ $message }}</div>@enderror</div>
-                    <div class='form-group'><label for='kelompok_usia'>Kelompok usia</label><input type='text' class='form-control @error('kelompok_usia')  is-invalid @enderror' wire:model='kelompok_usia'>@error('kelompok_usia')<div class='invalid-feedback'>{{ $message }}</div>@enderror</div>
-                    <div class='form-group'><label for='kategori'>Kategori</label><input type='text' class='form-control @error('kategori')  is-invalid @enderror' wire:model='kategori'>@error('kategori')<div class='invalid-feedback'>{{ $message }}</div>@enderror</div>
-                    <div class='form-group'><label for='sub_kategori'>Sub kategori</label><input type='text' class='form-control @error('sub_kategori')  is-invalid @enderror' wire:model='sub_kategori'>@error('sub_kategori')<div class='invalid-feedback'>{{ $message }}</div>@enderror</div>
-                    <div class='form-group'><label for='vaksinasi'>Vaksinasi</label><input type='text' class='form-control @error('vaksinasi')  is-invalid @enderror' wire:model='vaksinasi'>@error('vaksinasi')<div class='invalid-feedback'>{{ $message }}</div>@enderror</div>
-                    <div class='form-group'><label for='tiket_vaksinasi'>Tiket vaksinasi</label><input type='text' class='form-control @error('tiket_vaksinasi')  is-invalid @enderror' wire:model='tiket_vaksinasi'>@error('tiket_vaksinasi')<div class='invalid-feedback'>{{ $message }}</div>@enderror</div>
-                    <div class='form-group'><label for='jenis_vaksin'>Jenis vaksin</label><input type='text' class='form-control @error('jenis_vaksin')  is-invalid @enderror' wire:model='jenis_vaksin'>@error('jenis_vaksin')<div class='invalid-feedback'>{{ $message }}</div>@enderror</div>
+                    <div class='form-group'><label for='name'>Name</label><input type='text' class='form-control @error('name')  is-invalid @enderror' wire:model='name'>@error('name')<div class='invalid-feedback'>{{ $message }}</div>@enderror</div>
+                    <div class='form-group'><label for='description'>Description</label><input type='text' class='form-control @error('description')  is-invalid @enderror' wire:model='description'>@error('description')<div class='invalid-feedback'>{{ $message }}</div>@enderror</div>
+                    <div class='form-group'><label for='status'>Status</label><input type='text' class='form-control @error('status')  is-invalid @enderror' wire:model='status'>@error('status')<div class='invalid-feedback'>{{ $message }}</div>@enderror</div>
+                    <div class='form-group'><label for='type'>Type</label><input type='text' class='form-control @error('type')  is-invalid @enderror' wire:model='type'>@error('type')<div class='invalid-feedback'>{{ $message }}</div>@enderror</div>
                     
                 </div>
                 <div class="modal-footer">

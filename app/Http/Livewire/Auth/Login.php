@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Auth;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Artisan;
 
 class Login extends Component
 {
@@ -23,7 +24,7 @@ class Login extends Component
         ]);
         
         if(Auth::attempt(['email' => $this->email, 'password'=> $this->password])) {
-            
+            Artisan::call('cache:clear');
             return redirect()->route('admin.dashboard');
             
         } else {

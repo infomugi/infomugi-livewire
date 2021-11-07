@@ -4,20 +4,19 @@ namespace App\Http\Livewire\Master;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Puskesmas as Model;
+use App\Models\Division as Model;
 
 
-class Puskesmas extends Component
+class Division extends Component
 {
     use WithPagination;
     
     public $paginate = 10;
     
     public $name;
-    public $address;
-    public $phone;
-    public $email;
+    public $description;
     public $status;
+    public $type;
     
     
     public $mode = 'create';
@@ -32,21 +31,17 @@ class Puskesmas extends Component
     
     protected $rules = [
         'name' => 'required',
-        'address' => 'required',
-        'phone' => 'required',
-        'email' => 'required',
+        'description' => 'required',
         'status' => 'required',
+        'type' => 'required',
         
     ];
     
     
     
-    public function updated($propertyName)
+    public function updated($propertyName,$rules)
     {
-        $this->validateOnly($propertyName, [
-            'name' => 'required',
-            'address' => 'required',
-        ]);
+        $this->validateOnly($propertyName,$rules);
     }
     
     public function updatingSearch()
@@ -56,8 +51,8 @@ class Puskesmas extends Component
     
     public function render()
     {
-        $model = Model::where('name', 'like', '%'.$this->search.'%')->orWhere('address', 'like', '%'.$this->search.'%')->orWhere('phone', 'like', '%'.$this->search.'%')->orWhere('email', 'like', '%'.$this->search.'%')->orWhere('status', 'like', '%'.$this->search.'%')->latest()->paginate($this->paginate);
-        return view('livewire.master.puskesmas', [
+        $model = Model::where('name', 'like', '%'.$this->search.'%')->orWhere('description', 'like', '%'.$this->search.'%')->orWhere('status', 'like', '%'.$this->search.'%')->orWhere('type', 'like', '%'.$this->search.'%')->latest()->paginate($this->paginate);
+        return view('livewire.master.division', [
             'rows'=> $model
         ]);
     }
@@ -80,10 +75,9 @@ class Puskesmas extends Component
         $model = Model::find($primaryId);
         
         $this->name= $model->name;
-        $this->address= $model->address;
-        $this->phone= $model->phone;
-        $this->email= $model->email;
+        $this->description= $model->description;
         $this->status= $model->status;
+        $this->type= $model->type;
         
         
         $this->emit("showForm");
@@ -99,19 +93,15 @@ class Puskesmas extends Component
     
     public function store()
     {
-        $validatedData = $this->validate([
-            'name' => 'required',
-            'address' => 'required',
-        ]);
+        $this->validate();
         
         $model = new Model();
         
         $model->name= $this->name;
-        $model->address= $this->address;
-        $model->phone= $this->phone;
-        $model->email= $this->email;
-        $model->status= 1;
-        $model->save($validatedData);
+        $model->description= $this->description;
+        $model->status= $this->status;
+        $model->type= $this->type;
+        $model->save();
         
         $this->resetForm();
         $this->emit("hideForm");
@@ -123,29 +113,24 @@ class Puskesmas extends Component
     public function resetForm()
     {
         $this->name= "";
-        $this->address= "";
-        $this->phone= "";
-        $this->email= "";
+        $this->description= "";
         $this->status= "";
+        $this->type= "";
         
     }
     
     
     public function update()
     {
-        $validatedData = $this->validate([
-            'name' => 'required',
-            'address' => 'required',
-        ]);
+        $this->validate();
         
         $model = Model::find($this->primaryId);
         
         $model->name= $this->name;
-        $model->address= $this->address;
-        $model->phone= $this->phone;
-        $model->email= $this->email;
-        $model->status= 1;
-        $model->save($validatedData);
+        $model->description= $this->description;
+        $model->status= $this->status;
+        $model->type= $this->type;
+        $model->save();
         
         $this->resetForm();
         $this->emit("hideForm");
