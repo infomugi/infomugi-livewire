@@ -1,3 +1,5 @@
+@section('pageTitle', 'Kelola Puskesmas')
+
 <div>
     @if (session()->has('message'))
     <div class="flex mx-auto">

@@ -4,7 +4,7 @@
         <!--begin::Page title-->
         <div class="page-title d-flex flex-column me-5">
             <!--begin::Title-->
-            <h1 class="d-flex flex-column text-dark fw-bolder fs-3 mb-0">Dashboard</h1>
+            <h1 class="d-flex flex-column text-dark fw-bolder fs-3 mb-0">@yield('pageTitle')</h1>
             <!--end::Title-->
             <!--begin::Breadcrumb-->
             <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 pt-1">
@@ -19,7 +19,7 @@
                 </li>
                 <!--end::Item-->
                 <!--begin::Item-->
-                <li class="breadcrumb-item text-dark">Dashboard</li>
+                <li class="breadcrumb-item text-dark">@yield('pageTitle')</li>
                 <!--end::Item-->
             </ul>
             <!--end::Breadcrumb-->
