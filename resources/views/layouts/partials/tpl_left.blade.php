@@ -199,10 +199,10 @@
                                                                 <!--begin::Info-->
                                                                 <div class="me-2">
                                                                     <!--begin::Username-->
-                                                                    <a href="#" class="text-gray-800 text-hover-primary fs-6 fw-bold lh-0">Paul Melone</a>
+                                                                    <a href="#" class="text-gray-800 text-hover-primary fs-6 fw-bold lh-0">{{ auth()->user()->name }}</a>
                                                                     <!--end::Username-->
                                                                     <!--begin::Description-->
-                                                                    <span class="text-gray-400 fw-bold d-block fs-8">Python Dev</span>
+                                                                    <span class="text-gray-400 fw-bold d-block fs-8">{{ auth()->user()->email }}</span>
                                                                     <!--end::Description-->
                                                                 </div>
                                                                 <!--end::Info-->

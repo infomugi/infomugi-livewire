@@ -1,4 +1,4 @@
-<a wire:click="logout" class="btn btn-icon btn-active-color-primary me-n4" data-bs-toggle="tooltip" title="" data-bs-original-title="End session and singout">
+<a wire:click="logout" class="btn btn-icon btn-active-color-primary me-n4" data-bs-toggle="tooltip" title="" data-bs-original-title="Akhiri & Logout">
     <!--begin::Svg Icon | path: icons/duotune/arrows/arr076.svg') !!}-->
     <span class="svg-icon svg-icon-2 svg-icon-gray-400">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
